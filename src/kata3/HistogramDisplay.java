@@ -13,7 +13,7 @@ import org.jfree.ui.ApplicationFrame;
 
 public class HistogramDisplay extends ApplicationFrame{
     
-    private Histogram<String> histogram;
+    private Histogram histogram;
     
     public HistogramDisplay(Histogram<String> histogram) {
         super("HISTOGRAMA");
@@ -37,9 +37,9 @@ public class HistogramDisplay extends ApplicationFrame{
                                                         "Dominios emails", //Eje x
                                                         "Nº de emails", //Eje y
                                                         dataSet,
-                                                        PlotOrientation.HORIZONTAL,
-                                                        true, // Leyenda
-                                                        true,
+                                                        PlotOrientation.VERTICAL,
+                                                        false, // Leyenda
+                                                        false,
                                                         rootPaneCheckingEnabled);
         return chart;
     }
@@ -52,8 +52,8 @@ public class HistogramDisplay extends ApplicationFrame{
         dataSet.addValue(500,"GOOGLE","google.es");
         dataSet.addValue(100,"HOTMAIL","hotmail.es");*/
         
-        for (String key : this.histogram.keySet()) {
-            dataSet.addValue(this.histogram.get(key),"",key);
+        for (Object key : this.histogram.keySet()) {
+            dataSet.addValue(this.histogram.get(key),"",key.toString());
         }
         
         
